@@ -8,7 +8,7 @@
                     <table id="add-row" class="display table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Nama</th>
                                 <th>Position</th>
                                 <th>Office</th>
                                 <th style="width: 10%; text-align: center;">Action</th>
