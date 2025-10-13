@@ -11,7 +11,6 @@
     <link rel="icon" href="{{ asset('assets/img/kaiadmin/favicon.ico') }}" type="image/x-icon" />
 
     {{-- Fonts and icons --}}
-
     <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
     <script>
         WebFont.load({
@@ -27,19 +26,17 @@
                 ],
                 urls: ["{{ asset('assets/css/fonts.min.css') }}"]
             },
-            active: function() {
-                sessionStorage.fonts = true;
-            }
+            active: () => sessionStorage.fonts = true
         });
     </script>
-    {{-- CSS --}}
+
+    {{-- CSS Core --}}
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-    {{-- Custom spacing fix --}}
     <style>
         .search-box {
             display: flex;
@@ -142,11 +139,9 @@
             font-weight: 600;
         }
 
-
         .nav-secondary {
             margin-top: 10px !important;
         }
-
 
         .nav-item.active>a::before {
             display: none !important;
@@ -238,8 +233,7 @@
             /* warna hover */
             color: #333 !important;
         }
-    </style>
-    <style>
+
         .card {
             margin-top: 90px;
             /* jarak dari navbar */
@@ -250,6 +244,7 @@
             padding: 4px 8px !important;
         }
     </style>
+
     @yield('styles')
 </head>
 
@@ -260,7 +255,7 @@
 
         {{-- Main Panel --}}
         <div class="main-panel" id="main">
-            {{-- Main Header (Navbar) --}}
+            {{-- Navbar --}}
             <div class="main-header navbar-orange">
                 @include('layouts.navbar')
             </div>
@@ -275,62 +270,29 @@
         </div>
     </div>
 
-
     {{-- Optional modal --}}
     @yield('modal')
 
-    {{-- JS Core (gunakan hanya satu versi jQuery & Bootstrap bundle) --}}
+    {{-- Core JS --}}
     <script src="{{ asset('assets/js/core/jquery-3.7.1.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    {{-- Plugin scripts --}}
-    <script src="{{ asset('assets/js/kaiadmin.min.js') }}"></script>
+    {{-- Kaiadmin & Plugins --}}
     <script src="{{ asset('assets/js/plugins.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/kaiadmin.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugin/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    {{-- Optional Charts --}}
     <script src="{{ asset('assets/js/plugin/chart.js/chart.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugin/chart-circle/circles.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugin/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugin/jsvectormap/jsvectormap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugin/jsvectormap/world.js') }}"></script>
-    <script src="{{ asset('assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
 
     {{-- Demo --}}
     <script src="{{ asset('assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('assets/js/demo.js') }}"></script>
-    <!-- Tambahkan jQuery & Select2 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-    {{-- Optional Chart --}}
-    <script>
-        $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
-            type: "line",
-            height: "70",
-            width: "100%",
-            lineWidth: "2",
-            lineColor: "#177dff",
-            fillColor: "rgba(23, 125, 255, 0.14)",
-        });
-
-        $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
-            type: "line",
-            height: "70",
-            width: "100%",
-            lineWidth: "2",
-            lineColor: "#f3545d",
-            fillColor: "rgba(243, 84, 93, .14)",
-        });
-
-        $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
-            type: "line",
-            height: "70",
-            width: "100%",
-            lineWidth: "2",
-            lineColor: "#ffa534",
-            fillColor: "rgba(255, 165, 52, .14)",
-        });
-    </script>
 
     @yield('script')
 </body>

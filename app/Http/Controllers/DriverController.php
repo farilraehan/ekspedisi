@@ -7,59 +7,58 @@ use Illuminate\Http\Request;
 
 class DriverController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $drivers = Driver::all(); 
+        return view('driver.index', compact('drivers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
-        //
+        return view('driver.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+ 
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:20',
+            'alamat' => 'nullable|string|max:255',
+        ]);
+
+        Driver::create($validated);
+
+        return redirect()->route('driver.index')->with('success', 'Driver berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Driver $driver)
     {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Driver $driver)
     {
-        //
+        return view('driver.edit', compact('driver'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Driver $driver)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:20',
+            'alamat' => 'nullable|string|max:255',
+        ]);
+
+        $driver->update($validated);
+
+        return redirect()->route('driver.index')->with('success', 'Data driver berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Driver $driver)
     {
-        //
+        $driver->delete();
+
+        return redirect()->route('driver.index')->with('success', 'Driver berhasil dihapus.');
     }
 }

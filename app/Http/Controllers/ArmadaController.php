@@ -7,59 +7,51 @@ use Illuminate\Http\Request;
 
 class ArmadaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $armadas = Armada::all();
+        return view('armada.index', compact('armadas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('armada.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'plat_nomor' => 'required|string|max:50',
+            'jenis' => 'nullable|string|max:100',
+        ]);
+
+        Armada::create($validated);
+
+        return redirect()->route('armada.index')->with('success', 'Armada berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Armada $armada)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Armada $armada)
     {
-        //
+        return view('armada.edit', compact('armada'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Armada $armada)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'plat_nomor' => 'required|string|max:50',
+            'jenis' => 'nullable|string|max:100',
+        ]);
+
+        $armada->update($validated);
+
+        return redirect()->route('armadas.index')->with('success', 'Armada berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Armada $armada)
     {
-        //
+        $armada->delete();
+        return redirect()->route('armadas.index')->with('success', 'Armada berhasil dihapus.');
     }
 }
