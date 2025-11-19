@@ -40,10 +40,3 @@
         </div>
     </div>
 @endsection
-@section('script')
-    <script>
-        $("#add-row").DataTable({
-            pageLength: 5,
-        });
-    </script>
-@endsection

@@ -12,7 +12,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customer = Customer:: all();
+        return view('pelanggan.index', compact('customer'));
     }
 
     /**
@@ -20,15 +21,20 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('pelanggan.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'jenis' => 'required|string|max:20',
+            'alamat' => 'nullable|string|max:255',
+        ]);
+
+        Customer::create($validated);
+
+        return redirect()->route('pelanggan.index')->with('success', 'Customer berhasil ditambahkan.');
     }
 
     /**

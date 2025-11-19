@@ -1,3 +1,22 @@
+<style>
+    /* Scrollbar Track */
+    .sidebar-wrapper::-webkit-scrollbar-track {
+        background: #ffffff !important;
+    }
+
+    /* Scrollbar thumb (batang geser) */
+    .sidebar-wrapper::-webkit-scrollbar-thumb {
+        background: #d6d6d6 !important;
+        /* abu muda */
+        border-radius: 10px;
+    }
+
+    /* Lebar scrollbar */
+    .sidebar-wrapper::-webkit-scrollbar {
+        width: 6px;
+    }
+</style>
+
 <div class="sidebar shadow-sm bg-white" style="border-radius: 16px; margin: 16px;">
     <div class="logo-text-wrapper d-flex align-items-center" style="padding: 20px;">
         <img src="{{ asset('assets/img/logo1.png') }}" alt="Logo" />
@@ -6,8 +25,7 @@
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
                 <li class="nav-item active">
-                    <a data-bs-toggle="collapse" href="#dashboard" aria-expanded="true"
-                        style="width: 100%; display: flex;">
+                    <a href="{{ route('dashboard') }}" aria-expanded="true" style="width: 100%; display: flex;">
                         <i class="fas fa-home"></i>
                         <p class="dashboard-text">Dashboard</p>
                     </a>

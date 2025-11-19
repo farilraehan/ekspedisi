@@ -284,7 +284,11 @@
     <script src="{{ asset('assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+    <script>
+        $("#add-row").DataTable({
+            pageLength: 5,
+        });
+    </script>
     {{-- Optional Charts --}}
     <script src="{{ asset('assets/js/plugin/chart.js/chart.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
