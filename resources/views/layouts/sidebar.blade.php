@@ -65,6 +65,26 @@
                     <div class="collapse" id="submenu">
                         <ul class="nav nav-collapse">
                             <li>
+                                <a data-bs-toggle="collapse" href="#subnav2">
+                                    <span class="sub-item">Pelanggan</span>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="subnav2">
+                                    <ul class="nav nav-collapse subnav">
+                                        <li>
+                                            <a href="{{ route('customers.create') }}">
+                                                <span class="sub-item">Register Pelanggan</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('customers.index') }}">
+                                                <span class="sub-item">Data Pelanggan</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
                                 <a data-bs-toggle="collapse" href="#subnav1">
                                     <span class="sub-item">Driver</span>
                                     <span class="caret"></span>
@@ -99,26 +119,6 @@
                                         <li>
                                             <a href="{{ route('armadas.index') }}">
                                                 <span class="sub-item">Data Armada</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a data-bs-toggle="collapse" href="#subnav2">
-                                    <span class="sub-item">Pelanggan</span>
-                                    <span class="caret"></span>
-                                </a>
-                                <div class="collapse" id="subnav2">
-                                    <ul class="nav nav-collapse subnav">
-                                        <li>
-                                            <a href="{{ route('customers.create') }}">
-                                                <span class="sub-item">Register Pelanggan</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('customers.index') }}">
-                                                <span class="sub-item">Data Pelanggan</span>
                                             </a>
                                         </li>
                                     </ul>

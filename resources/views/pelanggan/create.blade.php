@@ -3,47 +3,52 @@
     <div class="col-md-12">
         <div class="card" style="border-radius:20px; overflow:hidden;">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="form-group">
-                            <label for="email2">Email Address</label>
-                            <select class="form-control select2" id="email2" name="email">
-                                <option value="">-- Pilih Email --</option>
-                                <option value="user1@email.com">user1@email.com</option>
-                                <option value="user2@email.com">user2@email.com</option>
-                                <option value="user3@email.com">user3@email.com</option>
-                            </select>
+                <form action="{{ route('customers.store') }}" method="POST">
+                    @csrf
+                    <div class="row">
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label>Perusahaan / Perorangan</label>
+                                <select class="form-control select2" name="jenis" required>
+                                    <option value="">-- Pilih Jenis --</option>
+                                    <option value="PERORANGAN">PERORANGAN</option>
+                                    <option value="PERUSAHAAN">PERUSAHAAN</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Email">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" />
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label>Nama</label>
+                                <input type="text" class="form-control" name="nama" required
+                                    placeholder="Nama Customer">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Alamat</label>
+                                <textarea class="form-control" name="alamat" placeholder="Alamat"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+
+                            <div class="form-group">
+                                <label>No. Hp</label>
+                                <input type="text" class="form-control" name="hp" placeholder="+62">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" />
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" />
-                        </div>
+                    <div class="card-action" style="text-align: right;">
+                        <a href="{{ route('customers.index') }}" class="btn btn-danger">Cancel</a>
+                        <button type="submit" class="btn btn-success">Simpan</button>
                     </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" />
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-action" style="text-align: right;">
-                <button class="btn btn-danger">Cancel</button>
-                <button class="btn btn-success">Simpan</button>
+                </form>
             </div>
 
         </div>
