@@ -12,8 +12,8 @@
                                 <label>Perusahaan / Perorangan</label>
                                 <select class="form-control select2" name="jenis" required>
                                     <option value="">-- Pilih Jenis --</option>
-                                    <option value="PERORANGAN">PERORANGAN</option>
-                                    <option value="PERUSAHAAN">PERUSAHAAN</option>
+                                    <option value="PERORANGAN">Perorangan</option>
+                                    <option value="PERUSAHAAN">Perusahaan</option>
                                 </select>
                             </div>
 

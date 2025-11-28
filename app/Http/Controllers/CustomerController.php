@@ -57,13 +57,13 @@ class CustomerController extends Controller
 
         return response()->json(['success' => true]);
     }
-public function destroy(Customer $customer)
-{
-    $customer->delete();
+    public function destroy(Customer $customer)
+    {
+        $customer->delete();
 
-    return redirect()->route('customers.index')
-        ->with('success', 'Customer berhasil dihapus.');
-}
+        return redirect()->route('customers.index')
+            ->with('success', 'Customer berhasil dihapus.');
+    }
 
     public function show(Customer $customer)
     {

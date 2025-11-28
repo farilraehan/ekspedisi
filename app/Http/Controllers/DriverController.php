@@ -24,7 +24,8 @@ class DriverController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'no_hp' => 'required|string|max:20',
+            'nomor_kendaraan' => 'required|string|max:20',
+            'hp' => 'required|string|max:20',
             'alamat' => 'nullable|string|max:255',
         ]);
 
@@ -32,33 +33,29 @@ class DriverController extends Controller
 
         return redirect()->route('driver.index')->with('success', 'Driver berhasil ditambahkan.');
     }
-
-    public function show(Driver $driver)
-    {
-    }
-
     public function edit(Driver $driver)
     {
-        return view('driver.edit', compact('driver'));
+        return response()->json($driver);
     }
 
     public function update(Request $request, Driver $driver)
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'no_hp' => 'required|string|max:20',
+            'nomor_kendaraan' => 'required|string|max:20',
+            'hp' => 'required|string|max:20',
             'alamat' => 'nullable|string|max:255',
         ]);
 
         $driver->update($validated);
 
-        return redirect()->route('driver.index')->with('success', 'Data driver berhasil diperbarui.');
+        return response()->json(['success' => true]);
     }
-
     public function destroy(Driver $driver)
     {
         $driver->delete();
 
-        return redirect()->route('driver.index')->with('success', 'Driver berhasil dihapus.');
+        return redirect()->route('driver.index')
+            ->with('success', 'Driver berhasil dihapus.');
     }
 }

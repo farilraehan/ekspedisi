@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Armada extends Model
 {
     use HasFactory;
+    protected $table = 'armadas';
+    protected $guarded = [];
 }

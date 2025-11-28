@@ -21,9 +21,8 @@ class ArmadaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
-            'plat_nomor' => 'required|string|max:50',
-            'jenis' => 'nullable|string|max:100',
+            'jenis' => 'required|in:Motor,Mobil Pickup,Mobil Box,Truck,Wingbox',
+            'nomor_kendaraan' => 'required|string|max:50',
         ]);
 
         Armada::create($validated);
@@ -33,7 +32,7 @@ class ArmadaController extends Controller
 
     public function edit(Armada $armada)
     {
-        return view('armada.edit', compact('armada'));
+        return response()->json($armada);
     }
 
     public function update(Request $request, Armada $armada)
@@ -46,7 +45,7 @@ class ArmadaController extends Controller
 
         $armada->update($validated);
 
-        return redirect()->route('armadas.index')->with('success', 'Armada berhasil diperbarui.');
+        return response()->json(['success' => true]);
     }
 
     public function destroy(Armada $armada)
